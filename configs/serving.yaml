@@ -1,0 +1,56 @@
+# Serving configuration for ScientificLLM-Forge
+serving:
+  # Server configuration
+  server:
+    host: "0.0.0.0"
+    port: 8000
+    workers: 4
+    reload: false
+    
+  # Model configuration
+  model:
+    model_path: "outputs/best_model"
+    device: "auto"
+    max_length: 512
+    temperature: 0.7
+    top_p: 0.9
+    top_k: 50
+    do_sample: true
+    
+  # API configuration
+  api:
+    title: "ScientificLLM-Forge API"
+    description: "API for serving fine-tuned scientific language models"
+    version: "0.1.0"
+    docs_url: "/docs"
+    redoc_url: "/redoc"
+    
+  # Rate limiting
+  rate_limit:
+    enabled: true
+    requests_per_minute: 60
+    burst_size: 10
+    
+  # Authentication
+  auth:
+    enabled: false
+    api_key_header: "X-API-Key"
+    
+  # Monitoring
+  monitoring:
+    enabled: true
+    metrics_endpoint: "/metrics"
+    health_check_endpoint: "/health"
+    
+  # CORS settings
+  cors:
+    enabled: true
+    origins: ["*"]
+    methods: ["GET", "POST", "PUT", "DELETE"]
+    headers: ["*"]
+    
+  # Logging
+  logging:
+    level: "INFO"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    file: "logs/serving.log" 

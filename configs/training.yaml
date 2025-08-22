@@ -1,0 +1,109 @@
+# Training configuration for ScientificLLM-Forge
+training:
+  # Model configuration
+  model:
+    name: "meta-llama/Llama-2-7b-hf"  # LLaMA-2 7B for genomics fine-tuning
+    model_type: "llama"
+    max_length: 2048  # Extended for scientific papers
+    padding: "max_length"
+    truncation: true
+    
+  # QLoRA configuration for memory-efficient fine-tuning
+  qlora:
+    enabled: true
+    r: 16  # LoRA rank
+    lora_alpha: 32  # LoRA scaling parameter
+    lora_dropout: 0.1  # LoRA dropout
+    target_modules: ["q_proj", "v_proj", "k_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+    bias: "none"
+    task_type: "CAUSAL_LM"
+    
+    # 4-bit quantization settings
+    quantization:
+      load_in_4bit: true
+      load_in_8bit: false
+      bnb_4bit_compute_dtype: "float16"
+      bnb_4bit_use_double_quant: true
+      bnb_4bit_quant_type: "nf4"
+    
+  # Training hyperparameters optimized for QLoRA
+  hyperparameters:
+    learning_rate: 2e-4  # Higher LR for QLoRA
+    batch_size: 1  # Small batch size for memory efficiency
+    gradient_accumulation_steps: 16  # Simulate larger batch size
+    num_epochs: 3
+    warmup_steps: 100
+    weight_decay: 0.01
+    max_grad_norm: 1.0
+    
+  # Optimizer settings
+  optimizer:
+    type: "AdamW"
+    beta1: 0.9
+    beta2: 0.999
+    epsilon: 1e-8
+    
+  # Scheduler settings
+  scheduler:
+    type: "linear"
+    num_warmup_steps: 500
+    
+  # Scientific data configuration
+  scientific_data:
+    data_file: "data/high_quality_papers_demo.json"
+    text_fields: ["title", "abstract"]  # Fields to use for training
+    preprocessing:
+      remove_citations: true
+      normalize_scientific_notation: true
+      handle_special_tokens: true
+      max_paper_length: 4096
+      
+  # Traditional data configuration (for backward compatibility)
+  data:
+    train_file: "data/train.jsonl"
+    validation_file: "data/validation.jsonl"
+    test_file: "data/test.jsonl"
+    text_column: "text"
+    label_column: "label"
+    
+  # Logging and monitoring
+  logging:
+    log_steps: 100
+    eval_steps: 500
+    save_steps: 1000
+    eval_strategy: "steps"
+    save_strategy: "steps"
+    load_best_model_at_end: true
+    metric_for_best_model: "eval_loss"
+    greater_is_better: false
+    
+  # Output configuration
+  output:
+    output_dir: "outputs"
+    overwrite_output_dir: true
+    save_total_limit: 3
+    
+  # Memory optimization and hardware configuration
+  memory_optimization:
+    gradient_checkpointing: true  # Save memory during backprop
+    max_memory_usage: 0.9  # Use up to 90% of available GPU memory
+    
+  hardware:
+    device: "auto"  # auto, cpu, cuda, mps
+    fp16: true  # Mixed precision training
+    bf16: false  # Use bfloat16 if supported
+    dataloader_num_workers: 4
+    dataloader_pin_memory: true
+    
+  # MLflow experiment tracking
+  mlflow:
+    enabled: true
+    experiment_name: "genomics-llm-finetuning"
+    tracking_uri: "file:./mlruns"
+    log_model: true
+    
+  # Distributed training configuration
+  distributed:
+    enabled: false  # Set to true for multi-GPU training
+    backend: "deepspeed"
+    deepspeed_config: "configs/deepspeed_config.json" 

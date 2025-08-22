@@ -1,0 +1,72 @@
+# PubMed API configuration for ScientificLLM-Forge
+api:
+  pubmed:
+    base_url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+    email: "your-email@example.com"  # Required for NCBI API
+    tool: "ScientificLLM-Forge"
+    max_requests_per_second: 3  # NCBI rate limit
+    max_requests_per_day: 10000  # NCBI daily limit
+    
+  # Optional: API key for higher rate limits
+  # api_key: "your-api-key-here"
+
+data:
+  pubmed:
+    # Search parameters
+    search_terms: [
+      "machine learning",
+      "deep learning", 
+      "artificial intelligence",
+      "natural language processing"
+    ]
+    date_from: "2020-01-01"
+    date_to: "2024-01-01"
+    max_results: 1000
+    
+    # Filter options
+    article_types: [
+      "research-article",
+      "review-article",
+      "case-report"
+    ]
+    languages: ["eng"]
+    
+    # Output settings
+    output_format: "jsonl"
+    include_abstract: true
+    include_keywords: true
+    include_authors: true
+    include_journal_info: true
+
+processing:
+  # Text preprocessing
+  max_abstract_length: 1000
+  min_abstract_length: 50
+  remove_html_tags: true
+  normalize_whitespace: true
+  
+  # Data cleaning
+  remove_duplicates: true
+  filter_by_language: true
+  required_fields: ["title", "abstract"]
+
+storage:
+  # Local storage settings
+  output_dir: "data/pubmed"
+  backup_dir: "data/backup"
+  
+  # Database settings (optional)
+  # database:
+  #   type: "postgresql"
+  #   host: "localhost"
+  #   port: 5432
+  #   database: "scientific_llm_forge"
+  #   username: "user"
+  #   password: "password"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/pubmed_data.log"
+  max_file_size: "10MB"
+  backup_count: 5
