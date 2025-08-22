@@ -1,0 +1,37 @@
+Title: DNABERT: pre-trained Bidirectional Encoder Representations from Transformers for DNA sequence analysis
+
+Authors: Zhang, L, Wang, J, Chen, X, Li, Y
+
+Journal: Nature Methods
+
+Publication Date: 2023-06-15
+
+Benchmarks: ENCODE, 1000 Genomes, TCGA
+
+Keywords: transformer, deep learning, neural network, machine learning, BERT, attention, foundation model, pre-trained
+================================================================================
+
+Title: Enformer: Predicting gene expression from DNA sequence using attention mechanisms
+
+Authors: Avsec, Z, Agarwal, V, Visentin, D, Ledsam, JR
+
+Journal: Nature
+
+Publication Date: 2023-09-20
+
+Benchmarks: ENCODE
+
+Keywords: deep learning, neural network, attention
+================================================================================
+
+Title: Multi-modal deep learning for cancer genomics and transcriptomics
+
+Authors: Garcia, P, Martinez, L, Rodriguez, A, Lopez, M
+
+Journal: Nature Communications
+
+Publication Date: 2023-11-05
+
+Benchmarks: TCGA, GTEx
+
+Keywords: transformer, deep learning

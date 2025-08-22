@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "generated_at": "2025-08-21T23:04:14.713169",
+    "total_papers_processed": 5,
+    "high_quality_papers_count": 3,
+    "quality_threshold": 70,
+    "pipeline_version": "1.0",
+    "demo_mode": true
+  },
+  "papers": [
+    {
+      "pmid": "12345678",
+      "title": "DNABERT: pre-trained Bidirectional Encoder Representations from Transformers for DNA sequence analysis",
+      "authors": [
+        "Zhang, L",
+        "Wang, J",
+        "Chen, X",
+        "Li, Y"
+      ],
+      "journal": "Nature Methods",
+      "publication_date": "2023-06-15",
+      "doi": "10.1038/s41592-023-01851-8",
+      "score": 122,
+      "tier": "gold_standard",
+      "ai_ml_detected": true,
+      "component_scores": {
+        "methodological_innovation": 35,
+        "benchmark_usage": 30,
+        "validation_rigor": 25,
+        "reproducibility": 12,
+        "synergy_bonus": 20
+      },
+      "reasoning": [
+        "Transformer Genomics: 20 pts",
+        "Foundation Model: 15 pts",
+        "Long Range: 12 pts"
+      ],
+      "keywords_found": [
+        "transformer",
+        "deep learning",
+        "neural network",
+        "machine learning",
+        "BERT",
+        "attention",
+        "foundation model",
+        "pre-trained"
+      ],
+      "benchmarks_used": [
+        "ENCODE",
+        "1000 Genomes",
+        "TCGA"
+      ],
+      "validation_methods": [
+        "cross-validation",
+        "state-of-the-art",
+        "statistical significance"
+      ],
+      "scored_at": "2025-08-21T23:04:14.712198"
+    },
+    {
+      "pmid": "12345679",
+      "title": "Enformer: Predicting gene expression from DNA sequence using attention mechanisms",
+      "authors": [
+        "Avsec, Z",
+        "Agarwal, V",
+        "Visentin, D",
+        "Ledsam, JR"
+      ],
+      "journal": "Nature",
+      "publication_date": "2023-09-20",
+      "doi": "10.1038/s41586-021-04020-1",
+      "score": 108,
+      "tier": "gold_standard",
+      "ai_ml_detected": true,
+      "component_scores": {
+        "methodological_innovation": 35,
+        "benchmark_usage": 20,
+        "validation_rigor": 21,
+        "reproducibility": 12,
+        "synergy_bonus": 20
+      },
+      "reasoning": [
+        "Transformer Genomics: 20 pts",
+        "Long Range: 12 pts",
+        "Novel Architecture: 8 pts"
+      ],
+      "keywords_found": [
+        "deep learning",
+        "neural network",
+        "attention"
+      ],
+      "benchmarks_used": [
+        "ENCODE"
+      ],
+      "validation_methods": [
+        "cross-validation",
+        "test set",
+        "statistical significance"
+      ],
+      "scored_at": "2025-08-21T23:04:14.712351"
+    },
+    {
+      "pmid": "12345682",
+      "title": "Multi-modal deep learning for cancer genomics and transcriptomics",
+      "authors": [
+        "Garcia, P",
+        "Martinez, L",
+        "Rodriguez, A",
+        "Lopez, M"
+      ],
+      "journal": "Nature Communications",
+      "publication_date": "2023-11-05",
+      "doi": "10.1038/s41467-023-41234-7",
+      "score": 110,
+      "tier": "gold_standard",
+      "ai_ml_detected": true,
+      "component_scores": {
+        "methodological_innovation": 28,
+        "benchmark_usage": 25,
+        "validation_rigor": 25,
+        "reproducibility": 12,
+        "synergy_bonus": 20
+      },
+      "reasoning": [
+        "Transformer Genomics: 20 pts",
+        "Novel Architecture: 8 pts",
+        "Two benchmarks: TCGA, GTEx"
+      ],
+      "keywords_found": [
+        "transformer",
+        "deep learning"
+      ],
+      "benchmarks_used": [
+        "TCGA",
+        "GTEx"
+      ],
+      "validation_methods": [
+        "cross-validation",
+        "state-of-the-art",
+        "statistical significance"
+      ],
+      "scored_at": "2025-08-21T23:04:14.712636"
+    }
+  ]
+}
